@@ -1,6 +1,6 @@
 ---
 description: >-
-  [Bqckup](https://bqckup.com) is Free and Open Source Backup a tool that helps you to regularly and
+  Bqckup is Free and Open Source Backup a tool that helps you to regularly and
   automatically perform backups on your servers. It is a simple and easy to use
   tool that can be used by anyone.
 ---
