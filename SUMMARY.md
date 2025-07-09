@@ -29,3 +29,7 @@
 ***
 
 * [FAQ](faq.md)
+
+## Troubleshoots
+
+* [Fixing a Corrupted Incremental Backup](troubleshoots/fixing-a-corrupted-incremental-backup.md)
