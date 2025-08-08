@@ -1,6 +1,8 @@
 # Usage
 
-## Create Storage Config
+This documentation will guide you on how to properly set up your **bqckup**.
+
+**Step 1:** Create config for the storages
 
 {% hint style="info" %}
 Currently, storage only supports the S3 protocol.
@@ -21,9 +23,13 @@ storages:
 
 There is also an option for remote storage, which you can [read it here](../storages/remote-storage.md).
 
-## Create Bqckup Config
+***
 
-There are two backup methods: conventional and incremental. The conventional method simply compresses your files into a `.tar.gz` archive and uploads it to the server.
+**Step 2:** Create config for your backup
+
+{% hint style="info" %}
+There are 2 backup methods: conventional and incremental. The conventional method simply compresses your files into a `.tar.gz` archive and uploads it to the server.
+{% endhint %}
 
 The configuration can be created in `/etc/bqckup/sites/your-config-name.yml`.
 
@@ -50,7 +56,7 @@ bqckup:
 ```
 {% endcode %}
 
-if it's incremental you can append this
+If it’s incremental, you can append this
 
 ```yaml
   incremental:
@@ -62,7 +68,9 @@ if it's incremental you can append this
 In the background, **bqckup** uses **rustic** for incremental backups, so you need to [install rustic](https://rustic.cli.rs/docs/installation.html) to make the incremental backup work.
 {% endhint %}
 
-## Run Bqckup
+***
+
+**Step 3:** Run the bqckup
 
 After completing those setups, run **bqckup** using the following command:
 
@@ -70,7 +78,11 @@ After completing those setups, run **bqckup** using the following command:
 bqckup run
 ```
 
-Create a cron job to schedule the backup by adding a script inside `/etc/cron.daily/bqckup` so it will be executed daily.
+***
+
+**Step 4:** Create a cron job to schedule your backup.
+
+If you want it to be executed daily, for example, create a cron job by adding a script inside `/etc/cron.daily/bqckup`.
 
 Command:
 
