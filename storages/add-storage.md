@@ -1,4 +1,10 @@
+---
+hidden: true
+---
+
 # Add Storage
+
+
 
 {% hint style="info" %}
 Currently, it's only supports S3 Object Storage.
