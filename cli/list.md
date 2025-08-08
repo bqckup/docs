@@ -1,10 +1,23 @@
-# List
+# Commands
 
-Below are examples of some [bqckup](https://bqckup.com) commands
+## Run
 
-| Command         | Description                       |
-| --------------- | --------------------------------- |
-| get-information | Inforation About [Bqckup](https://bqckup.com)           |
-| gui-active      | Enable Webview                    |
-| run             | Run [Bqckup](https://bqckup.com) Based on schedule      |
-| run --force     | Force Run [Bqckup](https://bqckup.com) without schedule |
+This is the command that you use to run the backup, here is how you use it
+
+```
+bqckup run
+```
+
+It also supports several parameters, to force a backup run even if it’s not on schedule:
+
+```
+bqckup run --force
+```
+
+To run a backup for a single site:
+
+```
+bqckup run --site mywebsite
+```
+
+Here, `mywebsite` is the backup name, which you can set in the `name` field inside `/etc/bqckup/sites/domain.yml`

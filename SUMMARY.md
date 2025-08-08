@@ -25,7 +25,7 @@
 
 ## CLI
 
-* [List](cli/list.md)
+* [Commands](cli/list.md)
 
 ***
 
