@@ -17,6 +17,7 @@
 ## Storages
 
 * [Add Storage](storages/add-storage.md)
+* [Remote Storage](storages/remote-storage.md)
 
 ## Backup
 
