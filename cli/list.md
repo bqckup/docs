@@ -41,7 +41,11 @@ bqckup history --site {site_name}
 
 ## Get List
 
-Coming soon
+You can get a list of files that were successfully backed up by running this command:
+
+```
+bqckup get-list {site_name}
+```
 
 ## Generate Link
 
