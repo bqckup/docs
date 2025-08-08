@@ -70,15 +70,13 @@ After completing those setups, run **bqckup** using the following command:
 bqckup run
 ```
 
-You can then set up a cron job to schedule it. Typically, I create a file named `bqckup` inside `/etc/cron.daily`:
-
-command to create cron:
+Create a cron job to schedule the backup by adding a script inside `/etc/cron.daily/bqckup` so it will be executed daily.
 
 ```sh
 touch /etc/cron.daily/bqckup && chmod +x /etc/cron.daily/bqckup
 ```
 
-and it's content:
+and the content:
 
 {% code title="/etc/cron.daily/bqckup" %}
 ```sh
