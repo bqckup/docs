@@ -2,6 +2,10 @@
 
 ## Create Storage Config
 
+{% hint style="info" %}
+Currently, storage only supports the S3 protocol.
+{% endhint %}
+
 Storage Config Stored in `/etc/bqckup/config/storage.yml`
 
 ```yaml
