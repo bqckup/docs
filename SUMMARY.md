@@ -12,7 +12,7 @@
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
-* [First Setup](getting-started/first-setup.md)
+* [Usage](getting-started/first-setup.md)
 
 ## Storages
 

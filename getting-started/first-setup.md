@@ -1,19 +1,84 @@
-# First Setup
+# Usage
 
-After successfully installing the bqckup software, the first setup requires you to enable the webview feature by running the following command:
+## Create Storage Config
 
-```bash
-bqckup gui-active
+Storage Config Stored in `/etc/bqckup/config/storage.yml`
+
+```yaml
+storages:
+  ojtbackup:
+    bucket: ${BUCKET_NAME}
+    access_key_id: ${ACCESS_KEY}
+    secret_access_key: ${SECRET_KEY}
+    region: ${REGION}
+    endpoint: ${ENDPOINT_URL}
+    primary: yes
 ```
 
-If you receive a message similar to the image below, it means that you have successfully activated the webview. The next step is to access the webview by visiting http://public\_ip:port (default 9393).
+There is also an option for remote storage, which you can [read it here](../storages/remote-storage.md).
 
-You will then be presented with this form:
+## Create Bqckup Config
 
-<figure><img src="../.gitbook/assets/2023-01-17_15-59.png" alt=""><figcaption><p>First Form ( Setup Key / Password)</p></figcaption></figure>
+There are two backup methods: conventional and incremental. The conventional method simply compresses your files into a `.tar.gz` archive and uploads it to the server.
 
-The first form is where you set the key/password that will be used to log in and access the bqckup dashboard
+The configuration can be created in `/etc/bqckup/sites/your-config-name.yml`.
 
-<figure><img src="../.gitbook/assets/2023-01-17_16-02.png" alt=""><figcaption><p>Second Form ( Storage configuration )</p></figcaption></figure>
+{% code title="/etc/bqckup/sites/mywebsite.yml" %}
+```yaml
+bqckup:
+  name: ${name}
+  path:
+    - ${path}
+  database:
+    type: mysql #Currently only support mysql
+    host: localhost
+    port: 3306
+    user: ${db_user}
+    password: ${db_password}
+    name: ${db_name}
+  options:
+    storage: ${storage_name} #can be found at /etc/bqckup/config/storages.yml
+    interval: daily # daily | weekly | monthly
+    retention: 7
+    save_locally: no # It will not delete your backup after it has been uploaded.
+    save_locally_path: /home/user/_backups
+    provider: s3
+```
+{% endcode %}
 
-The second form is for the initial setup of storage. If you do not have any storage yet, you can skip this step by clicking the **Button Skip**. If you already have storage, you can complete the details of the storage you want and it will be used as the config for storages.yml. If you already have a **storages.yml config**, you can upload it directly without filling in the form by clicking **already have config**
+if it's incremental you can append this
+
+```yaml
+  incremental:
+    enable: yes
+    password: mystrongpassword
+```
+
+{% hint style="warning" %}
+In the background, **bqckup** uses **rustic** for incremental backups, so you need to [install rustic](https://rustic.cli.rs/docs/installation.html) to make the incremental backup work.
+{% endhint %}
+
+## Run Bqckup
+
+After completing those setups, run **bqckup** using the following command:
+
+```shell
+bqckup run
+```
+
+You can then set up a cron job to schedule it. Typically, I create a file named `bqckup` inside `/etc/cron.daily`:
+
+command to create cron:
+
+```sh
+touch /etc/cron.daily/bqckup && chmod +x /etc/cron.daily/bqckup
+```
+
+and it's content:
+
+{% code title="/etc/cron.daily/bqckup" %}
+```sh
+/usr/bin/bqckup run >> /var/log/bqckup.log 2>&1
+```
+{% endcode %}
+
