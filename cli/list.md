@@ -20,4 +20,15 @@ To run a backup for a single site:
 bqckup run --site mywebsite
 ```
 
-Here, `mywebsite` is the backup name, which you can set in the `name` field inside `/etc/bqckup/sites/domain.yml`
+Here, `mywebsite` is the backup name, which you can set in the `name` field inside `/etc/bqckup/sites/domain.yml`\
+
+
+## History
+
+The backup history can be viewed using the following command:
+
+```
+bqckup history --site {site_name}
+```
+
+`site_name` also refers to the value of `name` inside `/etc/bqckup/sites/domain.yml`.
