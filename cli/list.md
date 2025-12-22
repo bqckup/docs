@@ -44,8 +44,10 @@ bqckup history --site {site_name}
 You can get a list of files that were successfully backed up by running this command:
 
 ```
-bqckup get-list {site_name}
+bqckup get-list {site_name} --full-id
 ```
+
+`--full-id`: show the full ID of incremental snapshots
 
 ## Generate Link
 
