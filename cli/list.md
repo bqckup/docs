@@ -26,7 +26,7 @@ Here, `mywebsite` is the backup name, which you can set in the `name` field insi
 You can also choose to run either an incremental or a full backup using this command.
 
 ```
-bqckup run --site mywebstite --incremental | --full
+bqckup --verbose run --site mywebstite --incremental | --full
 ```
 
 ## History
@@ -82,3 +82,16 @@ bqckup history --site {site_name}
 ```
 
 The snapshot ID is shown under the file name field in the history output.
+
+Alternatively, you can use:
+
+```shell
+bqckup get-list {site_name}
+```
+
+Snapshot ID can be found in the Incremental Backups table.
+
+## Environment Variable
+
+* `BQCKUP_DEBUG`: enables detailed error output and full tracebacks for debugging purposes.
+* `BQCKUP_VERBOSE`: displays more detailed runtime information, including internal process details.

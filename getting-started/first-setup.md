@@ -39,17 +39,22 @@ bqckup:
   name: ${name}
   path:
     - ${path}
-  database:
-    type: mysql #Currently only support mysql
-    host: localhost
-    port: 3306
-    user: ${db_user}
-    password: ${db_password}
-    name: ${db_name}
+  databases:
+    - enabled: yes
+      type: mysql # Currently only support mysql
+      host: localhost
+      port: 3306
+      user: ${db_user}
+      password: ${db_password}
+      name: ${db_name}
   options:
-    storage: ${storage_name} #can be found at /etc/bqckup/config/storages.yml
+    storage: ${storage_name} # can be found at /etc/bqckup/config/storages.yml
     interval: daily # daily | weekly | monthly
     retention: 7
+    keep:
+      daily: 7
+      weekly: 4
+      monthly: 4
     save_locally: no # It will not delete your backup after it has been uploaded.
     save_locally_path: /home/user/_backups
     provider: s3
